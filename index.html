@@ -3,23 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dine 'n' Dice</title>
-    <link rel="stylesheet" href="style.css">
+    <title>What to Eat?</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Dine 'n' Dice</h1>
-        <div class="dice" id="dice">
-            <div class="face front">Italian</div>
-            <div class="face back">Chinese</div>
-            <div class="face right">Mexican</div>
-            <div class="face left">Indian</div>
-            <div class="face top">Japanese</div>
-            <div class="face bottom">Thai</div>
-        </div>
-        <button id="rollButton">Roll the Dice</button>
-        <p id="result"></p>
-    </div>
+    <div id="scene-container"></div>
+    <button id="rollDice">Roll the Dice</button>
+    <script src="libs/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
