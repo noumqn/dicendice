@@ -1,20 +1,21 @@
-document.getElementById('rollButton').addEventListener('click', rollDice);
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({antialias: true});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('scene-container').appendChild(renderer.domElement);
 
-function rollDice() {
-    const dice = document.getElementById('dice');
-    const cuisines = ["Italian", "Chinese", "Mexican", "Indian", "Japanese", "Thai"];
-    const faces = [
-        { transform: 'rotateY(0deg)', name: 'Italian' },
-        { transform: 'rotateY(180deg)', name: 'Chinese' },
-        { transform: 'rotateY(90deg)', name: 'Mexican' },
-        { transform: 'rotateY(-90deg)', name: 'Indian' },
-        { transform: 'rotateX(90deg)', name: 'Japanese' },
-        { transform: 'rotateX(-90deg)', name: 'Thai' }
-    ];
-    
-    const randomIndex = Math.floor(Math.random() * faces.length);
-    const result = faces[randomIndex];
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-    dice.style.transform = result.transform + ' rotateZ(' + (Math.random() * 360) + 'deg)';
-    document.getElementById('result').textContent = `You should eat: ${result.name}!`;
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
 }
+
+animate();
